@@ -8,7 +8,7 @@ import java.time.LocalDate
 
 class CalendarTest {
 
-    lateinit var periodCalendar: PeriodCalendar
+    private lateinit var periodCalendar: PeriodCalendar
 
     @BeforeEach
     fun setUp() {
