@@ -29,4 +29,8 @@ class PeriodCalendar(
         day.addTemperature(temperature)
         dayMap[date] = day
     }
+
+    fun getNextPeriodWindow(): PeriodWindow {
+        return periodPredictor.predictNextPeriodWindow(dayMap.values)
+    }
 }
