@@ -1,6 +1,9 @@
 package com.arkvis.orchid
 
-class Day {
+import java.time.LocalDate
+
+class Day(val date: LocalDate) {
+
     var period: Period? = null
 
     fun addPeriod() {
