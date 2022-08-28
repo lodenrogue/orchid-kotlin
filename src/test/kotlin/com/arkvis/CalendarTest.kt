@@ -51,4 +51,14 @@ class CalendarTest {
         assertNotNull(day2.period)
         assertNotNull(day3.period)
     }
+
+    @Test
+    fun should_returnNoFlow_when_periodAddedWithNoFlow() {
+        val date = LocalDate.now()
+        periodCalendar.addPeriod(date)
+
+        val retrievedDay = periodCalendar.getDay(date)
+        val period = retrievedDay.period
+        assertNull(period?.flow)
+    }
 }
