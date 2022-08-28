@@ -23,4 +23,10 @@ class PeriodCalendar(
         day.addPeriod(flow)
         dayMap[date] = day
     }
+
+    fun addTemperature(date: LocalDate, temperature: Temperature) {
+        val day = dayMap.getOrDefault(date, Day(date))
+        day.addTemperature(temperature)
+        dayMap[date] = day
+    }
 }

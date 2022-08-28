@@ -5,6 +5,10 @@ import java.time.LocalDate
 class Day(val date: LocalDate) {
 
     var period: Period? = null
+        private set
+
+    var temperature: Temperature? = null
+        private set
 
     fun addPeriod() {
         period = Period()
@@ -13,5 +17,9 @@ class Day(val date: LocalDate) {
     fun addPeriod(flow: Flow) {
         addPeriod()
         period?.flow = flow
+    }
+
+    fun addTemperature(temperature: Temperature) {
+        this.temperature = temperature
     }
 }

@@ -1,12 +1,10 @@
 package com.arkvis
 
-import com.arkvis.orchid.Flow
-import com.arkvis.orchid.OvulationPredictor
-import com.arkvis.orchid.PeriodCalendar
-import com.arkvis.orchid.PeriodPredictor
+import com.arkvis.orchid.*
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
+import java.math.BigDecimal
 import java.time.LocalDate
 
 class CalendarTest {
@@ -104,5 +102,25 @@ class CalendarTest {
         val retrievedPeriod = retrievedDay.period
 
         assertEquals(Flow.SPOTTING, retrievedPeriod?.flow)
+    }
+
+    @Test
+    fun should_returnNoTemperature_when_noTemperatureAddedToDay() {
+        val date = LocalDate.now()
+        val retrievedDay = periodCalendar.getDay(date)
+        assertNull(retrievedDay.temperature)
+    }
+
+    @Test
+    fun should_returnTemperature_when_temperatureAddedToDay() {
+        val date = LocalDate.now()
+        val temperature = Temperature(BigDecimal("100"), Metric.FAHRENHEIT)
+        periodCalendar.addTemperature(date, temperature)
+
+        val retrievedDay = periodCalendar.getDay(date)
+        val retrievedTemp = retrievedDay.temperature
+
+        assertEquals(temperature.value, retrievedTemp?.value)
+        assertEquals(temperature.metric, retrievedTemp?.metric)
     }
 }
