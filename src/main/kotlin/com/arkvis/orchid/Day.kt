@@ -9,4 +9,9 @@ class Day(val date: LocalDate) {
     fun addPeriod() {
         period = Period()
     }
+
+    fun addPeriod(flow: Flow) {
+        addPeriod()
+        period?.flow = flow
+    }
 }

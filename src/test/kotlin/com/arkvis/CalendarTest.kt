@@ -1,10 +1,10 @@
 package com.arkvis
 
+import com.arkvis.orchid.Flow
 import com.arkvis.orchid.OvulationPredictor
 import com.arkvis.orchid.PeriodCalendar
 import com.arkvis.orchid.PeriodPredictor
-import org.junit.jupiter.api.Assertions.assertNotNull
-import org.junit.jupiter.api.Assertions.assertNull
+import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import java.time.LocalDate
@@ -60,5 +60,49 @@ class CalendarTest {
         val retrievedDay = periodCalendar.getDay(date)
         val period = retrievedDay.period
         assertNull(period?.flow)
+    }
+
+    @Test
+    fun should_returnCorrectFlow_when_periodAddedWithLightFlow() {
+        val date = LocalDate.now()
+        periodCalendar.addPeriod(date, Flow.LIGHT)
+
+        val retrievedDay = periodCalendar.getDay(date)
+        val retrievedPeriod = retrievedDay.period
+
+        assertEquals(Flow.LIGHT, retrievedPeriod?.flow)
+    }
+
+    @Test
+    fun should_returnCorrectFlow_when_periodAddedWithMediumFlow() {
+        val date = LocalDate.now()
+        periodCalendar.addPeriod(date, Flow.MEDIUM)
+
+        val retrievedDay = periodCalendar.getDay(date)
+        val retrievedPeriod = retrievedDay.period
+
+        assertEquals(Flow.MEDIUM, retrievedPeriod?.flow)
+    }
+
+    @Test
+    fun should_returnCorrectFlow_when_periodAddedWithHeavyFlow() {
+        val date = LocalDate.now()
+        periodCalendar.addPeriod(date, Flow.HEAVY)
+
+        val retrievedDay = periodCalendar.getDay(date)
+        val retrievedPeriod = retrievedDay.period
+
+        assertEquals(Flow.HEAVY, retrievedPeriod?.flow)
+    }
+
+    @Test
+    fun should_returnCorrectFlow_when_periodAddedWithSpottingFlow() {
+        val date = LocalDate.now()
+        periodCalendar.addPeriod(date, Flow.SPOTTING)
+
+        val retrievedDay = periodCalendar.getDay(date)
+        val retrievedPeriod = retrievedDay.period
+
+        assertEquals(Flow.SPOTTING, retrievedPeriod?.flow)
     }
 }

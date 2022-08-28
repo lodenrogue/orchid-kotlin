@@ -17,4 +17,10 @@ class PeriodCalendar(
         day.addPeriod()
         dayMap[date] = day
     }
+
+    fun addPeriod(date: LocalDate, flow: Flow) {
+        val day = dayMap.getOrDefault(date, Day(date))
+        day.addPeriod(flow)
+        dayMap[date] = day
+    }
 }

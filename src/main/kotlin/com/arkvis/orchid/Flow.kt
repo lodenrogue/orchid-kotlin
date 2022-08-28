@@ -1,4 +1,8 @@
 package com.arkvis.orchid
 
-class Flow {
+enum class Flow {
+    LIGHT,
+    MEDIUM,
+    HEAVY,
+    SPOTTING
 }
