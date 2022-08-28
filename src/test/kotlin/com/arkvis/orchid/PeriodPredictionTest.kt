@@ -26,7 +26,7 @@ class PeriodPredictionTest {
         val lastPeriod = LocalDate.now()
         periodCalendar.addPeriod(lastPeriod)
 
-        val expectedDate = lastPeriod.plusDays(PeriodPredictor.DEFAULT_CYCLE_LENGTH_IN_DAYS.toLong())
+        val expectedDate = lastPeriod.plusDays(PeriodPredictor.DEFAULT_CYCLE_LENGTH_IN_DAYS)
         val dates = periodCalendar.getNextPeriodWindow().dates
 
         assertEquals(1, dates.size)
@@ -44,7 +44,7 @@ class PeriodPredictionTest {
         val dates = periodCalendar.getNextPeriodWindow().dates
         assertEquals(4, dates.size)
 
-        val firstExpectedDate = firstPeriod.plusDays(PeriodPredictor.DEFAULT_CYCLE_LENGTH_IN_DAYS.toLong())
+        val firstExpectedDate = firstPeriod.plusDays(PeriodPredictor.DEFAULT_CYCLE_LENGTH_IN_DAYS)
         assertCorrectDates(firstExpectedDate, dates)
     }
 
@@ -69,7 +69,7 @@ class PeriodPredictionTest {
         val dates = periodCalendar.getNextPeriodWindow().dates
         assertEquals(5, dates.size)
 
-        val averageCycleLength = ((PeriodPredictor.DEFAULT_CYCLE_LENGTH_IN_DAYS + firstCycleLengthInDay) / 2).toLong()
+        val averageCycleLength = ((PeriodPredictor.DEFAULT_CYCLE_LENGTH_IN_DAYS + firstCycleLengthInDay) / 2)
         val firstExpectedDate = secondCycleDate.plusDays(averageCycleLength)
         assertCorrectDates(firstExpectedDate, dates)
     }
@@ -104,7 +104,7 @@ class PeriodPredictionTest {
         assertEquals(4, dates.size)
 
         val averageCycleLength =
-            ((PeriodPredictor.DEFAULT_CYCLE_LENGTH_IN_DAYS + firstCycleLengthInDay + secondCycleLengthInDays) / 3).toLong()
+            ((PeriodPredictor.DEFAULT_CYCLE_LENGTH_IN_DAYS + firstCycleLengthInDay + secondCycleLengthInDays) / 3)
 
         val firstExpectedDate = thirdCycleDate.plusDays(averageCycleLength)
         assertCorrectDates(firstExpectedDate, dates)

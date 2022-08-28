@@ -77,6 +77,6 @@ class PeriodPredictor {
     }
 
     companion object {
-        internal const val DEFAULT_CYCLE_LENGTH_IN_DAYS = 28
+        internal const val DEFAULT_CYCLE_LENGTH_IN_DAYS: Long = 28
     }
 }

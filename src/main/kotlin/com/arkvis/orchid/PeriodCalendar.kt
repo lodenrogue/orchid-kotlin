@@ -33,4 +33,8 @@ class PeriodCalendar(
     fun getNextPeriodWindow(): PeriodWindow {
         return periodPredictor.predictNextPeriodWindow(dayMap.values)
     }
+
+    fun getNextFertilityWindow(): FertilityWindow {
+        return ovulationPredictor.predictNextFertilityWindow(getNextPeriodWindow())
+    }
 }
