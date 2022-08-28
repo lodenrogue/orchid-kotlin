@@ -1,6 +1,5 @@
-package com.arkvis
+package com.arkvis.orchid
 
-import com.arkvis.orchid.*
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
