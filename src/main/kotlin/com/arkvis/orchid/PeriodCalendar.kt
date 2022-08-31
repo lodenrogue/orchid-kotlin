@@ -6,28 +6,28 @@ class PeriodCalendar(
     private val periodPredictor: PeriodPredictor,
     private val ovulationPredictor: OvulationPredictor
 ) {
-    private val dayMap: MutableMap<String, Day> = mutableMapOf()
+    private val dayMap: MutableMap<LocalDate, Day> = mutableMapOf()
 
     fun getDay(date: LocalDate): Day {
-        return dayMap.getOrDefault(date.toString(), Day(date))
+        return dayMap.getOrDefault(date, Day(date))
     }
 
     fun addPeriod(date: LocalDate) {
-        val day = dayMap.getOrDefault(date.toString(), Day(date))
+        val day = dayMap.getOrDefault(date, Day(date))
         day.addPeriod()
-        dayMap[date.toString()] = day
+        dayMap[date] = day
     }
 
     fun addPeriod(date: LocalDate, flow: Flow) {
-        val day = dayMap.getOrDefault(date.toString(), Day(date))
+        val day = dayMap.getOrDefault(date, Day(date))
         day.addPeriod(flow)
-        dayMap[date.toString()] = day
+        dayMap[date] = day
     }
 
     fun addTemperature(date: LocalDate, temperature: Temperature) {
-        val day = dayMap.getOrDefault(date.toString(), Day(date))
+        val day = dayMap.getOrDefault(date, Day(date))
         day.addTemperature(temperature)
-        dayMap[date.toString()] = day
+        dayMap[date] = day
     }
 
     fun getNextPeriodWindow(): PeriodWindow {
